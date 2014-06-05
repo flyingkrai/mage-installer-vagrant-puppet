@@ -10,16 +10,16 @@ A **standalone Magento DevOps environment** built with [Vagrant](http://www.vagr
  * Download and install [Git](http://git-scm.com/downloads)
 
 2. Grab the mage-installer-vagrant-puppet code
-```
-git clone https://github.com/flyingkrai/mage-installer-vagrant-puppet.git mage_project
-cd mage_project
-```
+ ```
+ git clone https://github.com/flyingkrai/mage-installer-vagrant-puppet.git mage_project
+ cd mage_project
+ ```
 
-3. Configure your magento installation in ** Vagrantfile **
+3. Configure your magento installation in **Vagrantfile**
  ###### Project configuration
  * `ip_address` the guest machine IP
  * `project_name` this variable will define the site url and the folder inside */var/www*
- * `project_www_name` sets what url you will access from your **host** machine (e.g.: if you set ***project_name*** as *mage_project* the default url be the name plus "*.local*" -- *http://mage_project.local/*)
+ * `project_www_name` sets what url you will access from your **host** machine (e.g.: if you set ***project_name*** as  mage_project* the default url be the name plus "*.local*" -- *http://mage_project.local/*)
  * `project_www_aliases` an array with the project aliases
  * `project_root` the default is set to */var/www/**project_name***
  * `project_www` it uses ***project_root*** value and add a trailing */magento*. If you decide to change it remember to keep the trailing */magento*
@@ -54,19 +54,19 @@ cd mage_project
  * `mage_admin_lastname` admin last name
  * `mage_admin_email` admin email, **must be a valid email**
  * `mage_admin_username` admin username
- * `mage_admin_password` admin password, **must be at least of 7 characters and include both alphabetic and numeric characters**
+ * `mage_admin_password` admin password, **must be at least of 7 characters and include both alphabetic and numeric  characters**
 
 4. Start the app!
-```
-    vagrant up
-```
+ ```
+ vagrant up
+ ```
 
 5. (Optional) For some reason the Puppet fails to run the ***mage*** script, but you can run it from the host machine. I will try to fix it later!
-```
-cd /magento
-chmod +x mage
-./mage mage-setup
-```
+ ```
+ cd /magento
+ chmod +x mage
+ ./mage mage-setup
+ ```
 
 ## Security concerns
 
@@ -74,9 +74,9 @@ This virtual machine is configured to run locally so no security precautions wer
 
 ## Virtual Machine Specifications
 
- * Ubuntu 12.04 LTS (*precise32*)
- * Apache 2.2.22
- * MySQL 5.5.31
- * PHP 5.3.10
- * Composer
+* Ubuntu 12.04 LTS (*precise32*)
+* Apache 2.2.22
+* MySQL 5.5.31
+* PHP 5.3.10
+* Composer
 
