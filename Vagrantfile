@@ -11,7 +11,7 @@
 ip_address = "175.55.55.55" ### ALWAYS CHECK IT ###
 
 # The project name is base for directories, hostname and alike
-project_name = "mage_project"
+project_name = "mage-project"
 # begin danger part. this part is better leave as it is ;)
 project_www_name = project_name + ".local"
 project_www_aliases = [ "www." + project_www_name]

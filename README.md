@@ -18,8 +18,9 @@ A **standalone Magento DevOps environment** built with [Vagrant](http://www.vagr
 3. Configure your magento installation in **Vagrantfile**
  ###### Project configuration
  * `ip_address` the guest machine IP
- * `project_name` this variable will define the site url and the folder inside */var/www*
- * `project_www_name` sets what url you will access from your **host** machine (e.g.: if you set ***project_name*** as  mage_project* the default url be the name plus "*.local*" -- *http://mage_project.local/*)
+ * `project_name` this variable will define the site url and the folder inside */var/www*. Remember that the hostname should only contain letters, numbers,
+hyphens or dots and it cannot start with a hyphen or dot.
+ * `project_www_name` sets what url you will access from your **host** machine (e.g.: if you set ***project_name*** as  mage-project* the default url be the name plus "*.local*" -- *http://mage-project.local/*)
  * `project_www_aliases` an array with the project aliases
  * `project_root` the default is set to */var/www/**project_name***
  * `project_www` it uses ***project_root*** value and add a trailing */magento*. If you decide to change it remember to keep the trailing */magento*
