@@ -11,9 +11,13 @@
 ip_address = "175.55.55.55" ### ALWAYS CHECK IT ###
 
 # The project name is base for directories, hostname and alike
-project_name = "mage16"
+project_name = "mage_project"
+# begin danger part. this part is better leave as it is ;)
+project_www_name = project_name + ".local"
+project_www_aliases = [ "www." + project_www_name]
 project_root = "/var/www/" + project_name
-project_www = "/var/www/" + project_name + "/magento"
+project_www = project_root + "/magento"
+# end danger part
 
 # MySQL and PostgreSQL password - feel free to change it to something
 # more secure
@@ -31,7 +35,8 @@ mage_db_host = "localhost";
 mage_db_user = "user_mage";
 mage_db_pass = "pass_mage";
 mage_db_name = "db_mage";
-mage_url = "http://" + project_name + ".local/";
+mage_db_prefix = "m_";
+mage_url = "http://" + project_www_name + "/";
 mage_use_rewrites = 'true';
 mage_use_secure = 'no';
 mage_secure_base_url = mage_url; # change if needed
@@ -61,17 +66,16 @@ Vagrant.configure("2") do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
   config.vm.define project_name do |node|
-    node.vm.hostname = project_name + ".local"
+    node.vm.hostname = project_www_name
     node.vm.network :private_network, ip: ip_address
-    node.hostmanager.aliases = [ "www." + project_name + ".local" ]
+    node.hostmanager.aliases = project_www_aliases
   end
   config.vm.provision :hostmanager
 
   # ADDITIONAL CONFIGURATIONS
 
   # Set the timezone
-  config.vm.provision :shell, :inline => "echo \"EST\" |
-    sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+  config.vm.provision :shell, :inline => "echo \"EST\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
   # Use VBoxManage to customize the VM
   config.vm.provider :virtualbox do |vb|
@@ -101,6 +105,7 @@ Vagrant.configure("2") do |config|
       "project_name" => project_name,
       "project_root" => project_root,
       "project_www" => project_www,
+      "project_www_name" => project_www_name,
       "database_password" => database_password,
 
       "mage_version" => mage_version,
@@ -111,6 +116,7 @@ Vagrant.configure("2") do |config|
       "mage_db_user" => mage_db_user,
       "mage_db_pass" => mage_db_pass,
       "mage_db_name" => mage_db_name,
+      "mage_db_prefix" => mage_db_prefix,
       "mage_url" => mage_url,
       "mage_use_rewrites" => mage_use_rewrites,
       "mage_use_secure" => mage_use_secure,

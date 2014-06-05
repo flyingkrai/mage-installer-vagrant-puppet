@@ -24,7 +24,8 @@ group { 'puppet':
 class { 'apache2':
     project_root => $project_root,
     project_www => $project_www,
-    project_name => $project_name
+    project_name => $project_name,
+    project_www_name => $project_www_name,
 }
 
 /**
@@ -46,6 +47,7 @@ class { 'magento':
     db_user => $mage_db_user,
     db_pass => $mage_db_pass,
     db_name => $mage_db_name,
+    db_prefix => $mage_db_prefix,
     url => $mage_url,
     use_rewrites => $mage_use_rewrites,
     use_secure => $mage_use_secure,
