@@ -61,7 +61,6 @@ nb-configuration.xml
 ### puppet-librarian ###
 # puppet-librarian - https://github.com/rodjek/librarian-puppet
 .tmp/
-modules/
 
 ### Windows ###
 # Windows image file caches

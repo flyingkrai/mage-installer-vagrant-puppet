@@ -9,14 +9,13 @@ A **standalone Magento DevOps environment** built with [Vagrant](http://www.vagr
  * Download and install [Vagrant Hostmanager](https://github.com/smdahlen/vagrant-hostmanager)
  * Download and install [Git](http://git-scm.com/downloads)
 
-
-3. Grab the mage-installer-vagrant-puppet code
+2. Grab the mage-installer-vagrant-puppet code
 ```
 git clone https://github.com/flyingkrai/mage-installer-vagrant-puppet.git mage_project
 cd mage_project
 ```
 
-4. Configure your magento installation in ** Vagrantfile **
+3. Configure your magento installation in ** Vagrantfile **
  ###### Project configuration
  * `ip_address` the guest machine IP
  * `project_name` this variable will define the site url and the folder inside */var/www*
@@ -57,12 +56,12 @@ cd mage_project
  * `mage_admin_username` admin username
  * `mage_admin_password` admin password, **must be at least of 7 characters and include both alphabetic and numeric characters**
 
-3. Start the app!
+4. Start the app!
 ```
     vagrant up
 ```
 
-4. (Optional) For some reason the Puppet fails to run the ***mage*** script, but you can run it from the host machine. I will try to fix it later!
+5. (Optional) For some reason the Puppet fails to run the ***mage*** script, but you can run it from the host machine. I will try to fix it later!
 ```
 cd /magento
 chmod +x mage
