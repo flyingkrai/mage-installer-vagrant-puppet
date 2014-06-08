@@ -11,7 +11,7 @@
 ip_address = "175.55.55.55" ### ALWAYS CHECK IT ###
 
 # The project name is base for directories, hostname and alike
-project_name = "mage-project"
+project_name = "mage16"
 # begin danger part. this part is better leave as it is ;)
 project_www_name = project_name + ".local"
 project_www_aliases = [ "www." + project_www_name]
@@ -27,7 +27,9 @@ database_password = "root"
 #
 ### magento version ###
   #1.8.1.0 #1.7.0.2 #1.7.0.1 #1.7.0.0 #1.6.2.0 #1.6.1.0 #1.6.0.0 #1.5.1.0 #1.5.0.1
-mage_version = '1.5.1.0';
+mage_download = false;
+mage_install_db = false;
+mage_version = '1.6.2.0';
 mage_locale = 'pt_BR';
 mage_timezone = 'America/Sao_Paulo';
 mage_default_currency = 'BRL';
@@ -35,7 +37,7 @@ mage_db_host = "localhost";
 mage_db_user = "user_mage";
 mage_db_pass = "pass_mage";
 mage_db_name = "db_mage";
-mage_db_prefix = "m_";
+mage_db_prefix = "";
 mage_url = "http://" + project_www_name + "/";
 mage_use_rewrites = 'true';
 mage_use_secure = 'no';
@@ -108,6 +110,8 @@ Vagrant.configure("2") do |config|
       "project_www_name" => project_www_name,
       "database_password" => database_password,
 
+      "mage_download" => mage_download,
+      "mage_install_db" => mage_install_db,
       "mage_version" => mage_version,
       "mage_locale" => mage_locale,
       "mage_timezone" => mage_timezone,
