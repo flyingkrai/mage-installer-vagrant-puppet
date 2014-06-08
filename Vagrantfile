@@ -8,10 +8,10 @@
 
 # IP Address for the host only network, change it to anything you like
 # but please keep it within the IPv4 private network range
-ip_address = "175.55.55.55" ### ALWAYS CHECK IT ###
+ip_address = "177.77.77.77" ### ALWAYS CHECK IT ###
 
 # The project name is base for directories, hostname and alike
-project_name = "mage16"
+project_name = "jon-mage"
 # begin danger part. this part is better leave as it is ;)
 project_www_name = project_name + ".local"
 project_www_aliases = [ "www." + project_www_name]
@@ -27,9 +27,9 @@ database_password = "root"
 #
 ### magento version ###
   #1.8.1.0 #1.7.0.2 #1.7.0.1 #1.7.0.0 #1.6.2.0 #1.6.1.0 #1.6.0.0 #1.5.1.0 #1.5.0.1
-mage_download = false;
-mage_install_db = false;
-mage_version = '1.6.2.0';
+mage_download = true;
+mage_install_db = true;
+mage_version = '1.8.1.0';
 mage_locale = 'pt_BR';
 mage_timezone = 'America/Sao_Paulo';
 mage_default_currency = 'BRL';
@@ -78,6 +78,7 @@ Vagrant.configure("2") do |config|
 
   # Set the timezone
   config.vm.provision :shell, :inline => "echo \"EST\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+  # config.vm.provision :shell, :path => "./puppet/upgrade_puppet.sh"
 
   # Use VBoxManage to customize the VM
   config.vm.provider :virtualbox do |vb|
@@ -133,6 +134,12 @@ Vagrant.configure("2") do |config|
       "mage_admin_username" => mage_admin_username,
       "mage_admin_password" => mage_admin_password
     }
+    # Take any FACTER_ prefixed environment variable and set it as a fact for
+    # vagrant to give to puppet during provisioning.
+    ENV.each do |key, value|
+      next unless key =~ /^FACTER_/
+      puppet.facter[key.gsub(/^FACTER_/, "")] = value
+    end
   end
 
 end

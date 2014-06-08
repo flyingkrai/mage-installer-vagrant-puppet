@@ -8,7 +8,7 @@ Exec { path => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin' }
  * Run "apt-get update" before installing packages
  */
 exec { 'apt-update':
-    command => '/usr/bin/apt-get update'
+    command => '/usr/bin/apt-get update --fix-missing'
 }
 Exec['apt-update'] -> Package <| |>
 

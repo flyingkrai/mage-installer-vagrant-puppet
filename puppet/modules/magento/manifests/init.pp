@@ -66,27 +66,7 @@ class magento(
         exec { "install-magento":
             cwd     => "${$apache2::project_www}",
             creates => "${$apache2::project_www}/app/etc/local.xml",
-            command => "/usr/bin/php -f install.php -- \
-                --license_agreement_accepted \"yes\" \
-                --locale \"${locale}\" \
-                --timezone \"${timezone}\" \
-                --default_currency \"${default_currency}\" \
-                --db_host \"${db_host}\" \
-                --db_name \"${db_name}\" \
-                --db_user \"${db_user}\" \
-                --db_pass \"${db_pass}\" \
-                --db_prefix \"${db_prefix}\" \
-                --url \"${url}\" \
-                --use_rewrites \"${use_rewrites}\" \
-                --use_secure \"${use_secure}\" \
-                --secure_base_url \"${secure_base_url}\" \
-                --use_secure_admin \"${use_secure_admin}\" \
-                --skip_url_validation \"${skip_url_validation}\" \
-                --admin_firstname \"${admin_firstname}\" \
-                --admin_lastname \"${admin_lastname}\" \
-                --admin_email \"${admin_email}\" \
-                --admin_username \"${admin_username}\" \
-                --admin_password \"${admin_password}\"",
+            command => "/usr/bin/php -f install.php -- --license_agreement_accepted 'yes' --locale '${locale}' --timezone '${timezone}' --default_currency '${default_currency}' --db_host '${db_host}' --db_name '${db_name}' --db_user '${db_user}' --db_pass '${db_pass}' --db_prefix '${db_prefix}' --url '${url}' --use_rewrites '${use_rewrites}' --use_secure '${use_secure}' --secure_base_url '${secure_base_url}' --use_secure_admin '${use_secure_admin}' --skip_url_validation '${skip_url_validation}' --admin_firstname '${admin_firstname}' --admin_lastname '${admin_lastname}' --admin_email '${admin_email}' --admin_username '${admin_username}' --admin_password '${admin_password}'",
             require => [ Exec["setting-permissions"], Exec["create-magentodb-db"], Package["php5-cli"] ],
         }
     }
